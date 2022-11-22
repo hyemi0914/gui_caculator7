@@ -71,6 +71,13 @@ class Main(QDialog):
         button_remainder = QPushButton("%")
         button_setnull = QPushButton("C")
 
+        ### 제곱, 제곱근, 역수, 나머지, 값을 0으로 설정하는 버튼 클릭 시 시그널 설정
+        button_square.clicked.connect(lambda state, operation = "x^2": self.button_operation_clicked(operation))
+        button_root.clicked.connect(lambda state, operation = "x^1/2": self.button_operation_clicked(operation))
+        button_inverse.clicked.connect(lambda state, operation = "1/x":self.button_operation_clicked(operation))
+        button_remainder.clicked.connect(lambda state, operation = "%": self.button_operation_clicked(operation))
+        button_setnull.clicked.connect(lambda state, operation = "C": self.button_operation_clicked(operation))
+
         ### 제곱, 제곱근, 역수, 나머지, 값을 null로 설정하는 버튼을 layout_operation 레이아웃에 추가
         layout_operation.addWidget(button_square)
         layout_operation.addWidget(button_root)
@@ -118,9 +125,43 @@ class Main(QDialog):
         self.number_display.setText(equation)
 
     def button_operation_clicked(self, operation):
-        equation = self.number_display.text()
-        equation += operation
-        self.number_display.setText(equation)
+        # equation = self.number_display.text()
+        # equation += operation
+        # self.number_display.setText(equation)
+
+        if operation not in ["C", "1/x", "x^2", "x^1/2"]:
+            self.temp_number = float(self.number_display.text())
+            self.number_display.setText("")
+
+            self.temp_operator = operation
+
+        else:
+            if operation == "x^1/2":
+                self.temp_number = float(self.number_display.text())
+                self.temp_number = self.temp_number ** (1/2)
+                self.number_display.setText(str(self.temp_number))
+                pass
+
+            if operation == "x^2":
+                self.temp_number = float(self.number_display.text())
+                self.temp_number = self.temp_number * self.temp_number
+                self.number_display.setText(str(self.temp_number))
+                pass
+
+            if operation == "1/x":
+                self.temp_number = float(self.number_display.text())
+                self.temp_number = self.temp_number ** (-1)
+                self.number_display.setText(str(self.temp_number))
+                pass
+
+            if operation == "C":
+                self.temp_number = float(self.number_display.text())
+                self.temp_number = ""
+                self.number_display.setText(str(self.temp_number))
+                pass
+
+            self.temp_operator = ""
+            self.temp_number = 0
 
     def button_equal_clicked(self):
         # equation = self.equation.text()
@@ -140,6 +181,9 @@ class Main(QDialog):
 
         if self.temp_operator == "/":
             temp_result = self.temp_number / temp_second_number
+
+        if self.temp_operator == "%":
+            temp_result = self.temp_number % temp_second_number
 
         self.number_display.setText(str(temp_result))
 
