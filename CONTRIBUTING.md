@@ -5,7 +5,7 @@ like you that make Gui Caculator such a great tool.
 
 ### Where do I go from here?
 
-If you've noticed a bug or have a feature request, [make one](https://github.com/hyemi0914/gui_caculator3/issues/new)! It's
+If you've noticed a bug or have a feature request, [make one](https://github.com/hyemi0914/gui_caculator7/issues/new)! It's
 generally best if you get confirmation of your bug or approval for your feature
 request this way before starting to code.
 
@@ -36,7 +36,7 @@ At this point, you should switch back to your master branch and make sure it's
 up to date with gui_caculator1's master branch:
 
 ```sh
-git remote add upstream git@github.com:gui_caculator1/gui_caculator1.git
+git remote add upstream git@github.com:gui_caculator7/gui_caculator7.git
 git checkout master
 git pull upstream master
 ```
