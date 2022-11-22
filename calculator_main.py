@@ -15,6 +15,9 @@ class Main(QDialog):
         layout_number = QGridLayout()
         layout_equation_solution = QFormLayout()
 
+        self.temp_number = 0
+        self.temp_operator = ""
+
         ### 수식 입력과 답 출력을 위한 LineEdit 위젯 생성
         label_equation = QLabel("Equation: ")
         label_solution = QLabel("Number: ")
@@ -96,28 +99,47 @@ class Main(QDialog):
     ### functions ###
     #################
     def number_button_clicked(self, num):
-        equation = self.equation.text()
+        equation = self.number_display.text()
         equation += str(num)
-        self.equation.setText(equation)
+        self.number_display.setText(equation)
 
     def button_operation_clicked(self, operation):
-        equation = self.equation.text()
+        equation = self.number_display.text()
         equation += operation
-        self.equation.setText(equation)
+        self.number_display.setText(equation)
 
     def button_equal_clicked(self):
-        equation = self.equation.text()
-        solution = eval(equation)
-        self.solution.setText(str(solution))
+        # equation = self.equation.text()
+        # solution = eval(equation)
+        # self.solution.setText(str(solution))
+
+        temp_second_number = float(self.number_display.text())
+
+        if self.temp_operator == "+":
+            temp_result = self.temp_number + temp_second_number
+
+        if self.temp_operator == "-":
+            temp_result = self.temp_number - temp_second_number
+
+        if self.temp_operator == "*":
+            temp_result = self.temp_number * temp_second_number
+
+        if self.temp_operator == "/":
+            temp_result = self.temp_number / temp_second_number
+
+        self.number_display.setText(str(temp_result))
+
+        self.temp_operator = ""
+        self.temp_number = 0
 
     def button_clear_clicked(self):
-        self.equation.setText("")
-        self.solution.setText("")
+        # self.equation.setText("")
+        self.number_display.setText("")
 
     def button_backspace_clicked(self):
-        equation = self.equation.text()
+        equation = self.number_display.text()
         equation = equation[:-1]
-        self.equation.setText(equation)
+        self.number_display.setText(equation)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
