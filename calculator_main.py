@@ -64,6 +64,20 @@ class Main(QDialog):
         layout_clear_equal.addWidget(button_backspace)
         layout_clear_equal.addWidget(button_equal)
 
+        ### 제곱, 제곱근, 역수, 나머지, 값을 null로 설정하는 버튼 생성
+        button_square = QPushButton("x^2")
+        button_root = QPushButton("x^1/2")
+        button_inverse = QPushButton("1/x")
+        button_remainder = QPushButton("%")
+        button_setnull = QPushButton("C")
+
+        ### 제곱, 제곱근, 역수, 나머지, 값을 null로 설정하는 버튼을 layout_operation 레이아웃에 추가
+        layout_operation.addWidget(button_square)
+        layout_operation.addWidget(button_root)
+        layout_operation.addWidget(button_inverse)
+        layout_operation.addWidget(button_remainder)
+        layout_operation.addWidget(button_setnull)
+
         ### 숫자 버튼 생성하고, layout_number 레이아웃에 추가
         ### 각 숫자 버튼을 클릭했을 때, 숫자가 수식창에 입력 될 수 있도록 시그널 설정
         number_button_dict = {}
