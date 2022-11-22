@@ -19,7 +19,7 @@ python -m pip install pyqt5
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/hyemi0914/gui_caculator1/blob/main/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/hyemi0914/gui_caculator7/blob/main/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
